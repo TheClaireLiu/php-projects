@@ -11,8 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('item_user', function (Blueprint $table) {
+        Schema::create('items', function (Blueprint $table) {
             $table->id();
+            $table->string('task');
+            $table->foreignId('board_id')->constrained()->cascadeOnDelete(); //当board表中的ID被删除时，board_id可以被删除
             $table->timestamps();
         });
     }
@@ -22,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('item_user');
+        Schema::dropIfExists('items');
     }
 };

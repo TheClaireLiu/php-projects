@@ -17,7 +17,8 @@ class ItemFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'task' => $this->faker->sentence(),
+            'board_id' => $this->faker->numberBetween(1,5)
         ];
     }
 }
